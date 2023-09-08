@@ -1,0 +1,105 @@
+{% extends 'shop/basic.html' %}
+
+
+{% block css %}
+   h1{
+        font-family: 'Baloo Bhai 2', cursive;
+        font-weight: bold;
+        font-size: 4rem;
+   }
+
+   #heading{
+        height: 400px;
+        width: 50%;
+    }
+
+    #heading2{
+        height: 400px;
+        width: 50%;
+    }
+
+    .divcon{
+        padding:10px;
+        border: 12px solid black;
+
+    }
+{% endblock %}
+
+{% block title%}Electronics {% endblock %}
+
+
+{% block body %}
+    {% load static %}
+    <div class="container-fluid px-5 bg-white">
+        <h1 class="mt-5 ms-4 text-center text-primary">{{category}}</h1>
+        <div class="divcon d-flex flex-row">
+            <img src='{% static  "shop/electronics1.png" %}' class="me-2" id="heading" alt="">
+            <img src='{% static  "shop/electronics2.png" %}' class=""id="heading2" alt="">
+       </div>
+    </div>
+
+   <div class="container2 bg-light  p-2 mt-5 d-flex flex-row justify-content-around">
+   {% for i in products|slice:"0:" %}
+        {% if forloop.counter|divisibleby:4 %}
+            <div class="card my-2 me-4 ms-4" style="width: 18rem;">
+                <img src='/media/{{i.image}}' class="card-img-top" >
+                <div class="card-body">
+                <h5 class="card-title"><b>{{i.brand_name}} {{i.product_name}}</b></h5>
+                <h6 class="mt-3"><b>Category:</b> {{i.category_name}}</h6>
+                <h6><b>Price:</b> Rs. {{i.cost_price}}</h6>
+                <h6><b>Description:</b> {{i.descript|slice:"0:49"}}....</h6>
+                <span class="divpr" id="div{{i.item_id}}">
+            <button class="btn btn-primary mt-3 me-3 cart" id="{{i.item_id}}">Add to Cart</button>
+          </span>
+                <a href="/shop/productview/{{i.item_id}}" class="btn btn-primary mt-3">Product View</a>
+                </div>
+            </div>
+       
+
+        {% else %}
+            <div class="card my-2 me-4" style="width: 18rem;">
+                <img src='/media/{{i.image}}' class="card-img-top">
+                <div class="card-body">
+                <h5 class="card-title"><b>{{i.brand_name}} {{i.product_name}}</b></h5>
+                <h6 class="mt-3"><b>Category:</b> {{i.category_name}}</h6>
+                <h6><b>Price:</b> Rs. {{i.cost_price}}</h6>
+                <h6><b>Description:</b> {{i.descript|slice:"0:49"}}....</h6>
+                <span class="divpr" id="div{{i.item_id}}">
+            <button class="btn btn-primary mt-3 me-3 cart" id="{{i.item_id}}">Add to Cart</button>
+          </span>
+                <a href="/shop/productview/{{i.item_id}}" class="btn btn-primary mt-3">Product View</a>
+                </div>
+            </div>
+        {% endif %}
+
+        {% if forloop.counter|divisibleby:4  and not forloop.last %}
+           </div>
+           <div class="container2 bg-light mt-5  p-2  d-flex flex-row justify-content-around">
+        {% endif %}
+    {% endfor %} 
+    </div>
+
+{% endblock %}
+
+{% block js %}
+<script>
+    document.getElementById('home').className="nav-link";
+    document.getElementById('food').className="nav-link";
+    document.getElementById('beauty').className="nav-link";
+    document.getElementById('health').className="nav-link";
+    document.getElementById('clothes').className="nav-link";
+    document.getElementById('furniture').className="nav-link";
+    document.getElementById('daily_items').className="nav-link";
+    document.getElementById('appliances').className="nav-link";
+    document.getElementById('beverages').className="nav-link";
+    document.getElementById('electronics').className="nav-link active";
+    document.getElementById('sports_equipment').className="nav-link";
+    document.getElementById('cleaning').className="nav-link";
+    document.getElementById('stationery').className="nav-link";
+    document.getElementById('medical').className="nav-link";
+</script>
+{% endblock %}
+
+
+
+

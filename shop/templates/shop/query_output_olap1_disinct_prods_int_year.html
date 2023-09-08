@@ -1,0 +1,30 @@
+{% extends 'shop/basic.html' %}
+
+{% block css %}
+    
+{% endblock %}
+
+
+{% block title%} Query output{% endblock %}
+
+{% block body %}
+{% load static %}
+<h1 class="text-center mt-4 ">Query Output:</h1>
+<h2 class="text-center mt-4 mb-4">No. of non distinct products sold in each category each year</h2>
+<table class="table table-bordered table-striped  text-center  mt-3 mb-3 ">
+    <tr>
+        <th>Category Name</th>
+        <th>Year</th>
+        <th>Quantity sold</th>
+    </tr>
+{% for a in products %}
+
+<tr>
+    <td>{{a.category_name}}</td>
+    <td>{{a.year}}</td>
+    <td>{{a.Quantity_sold}}</td>
+</tr>
+{% endfor %}
+</table>
+
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'shop/basic.html' %}
+
+{% block css %}
+    
+{% endblock %}
+
+
+{% block title%} Query output{% endblock %}
+
+{% block body %}
+{% load static %}
+<h1 class="text-center mt-4 ">Query Output:</h1>
+<h2 class="text-center mt-4 mb-4">brand-wise profit (in Rs.) each year</h2>
+<table class="table table-bordered table-striped  text-center  mt-3 mb-3 ">
+    <tr>
+        <th>Brand Name</th>
+        <th>Year</th>
+        <th>Profit</th>
+    </tr>
+{% for a in profits %}
+
+<tr>
+    <td>{{a.brand_name}}</td>
+    <td>{{a.year}}</td>
+    <td>{{a.profit}}</td>
+</tr>
+{% endfor %}
+</table>
+
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends 'shop/basic.html' %}
+
+{% block title%} View Cart{% endblock %}
+
+{% block body %}
+{% load static %}
+<h1 class="mt-4 ms-3 text-center mb-5">Here are your orders </h1>
+<!-- <h3>{{products.0.brand_name}} {{products.0.product_name}} {{qty.0}}</h3> -->
+
+{% for a in orders %}
+<h3 class="text-center text-decoration-underline" style="margin-top: 100px;">Order {{a.2}}</h3>
+<table class="table table-bordered table-striped text-center mt-3 mb-3 ">
+    <tr>
+        <th>Item-name</th>
+        <th>Quantity</th>
+        <th>Cost Price per piece</th>
+        <th>Total</th>
+    </tr>
+    {% for i,j in a.0.items %}
+    <tr>
+        <td>{{i.brand_name}}-{{i.product_name}}</td>
+        <td>{{j.0}}</td>
+        <td> Rs. {{i.cost_price}}</td>
+        <td> Rs. {{j.1}}</td>
+
+    </tr>
+    {% endfor %}
+</table>
+<h4 class="text-center mb-5">The total amount payable was Rs. {{a.1}} </h4>
+{% endfor %}
+
+
+
+{% endblock %}

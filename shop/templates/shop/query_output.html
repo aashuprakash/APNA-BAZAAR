@@ -1,0 +1,23 @@
+{% extends 'shop/basic.html' %}
+
+{% block title%} Query output{% endblock %}
+
+{% block body %}
+{% load static %}
+<h1 class="text-center mt-4">Query Output</h1>
+<table class="table table-bordered table-striped  text-center  mt-3 mb-3 ">
+    <tr>
+        {% for a in headings %}
+            <th>{{a}}</th>
+        {% endfor %}
+
+    </tr>
+{% for a in values %}
+<tr>
+    {% for b in a %}
+       <td>{{b}}</td>
+    {% endfor %}
+</tr>
+{% endfor %}
+</table>
+{% endblock %}

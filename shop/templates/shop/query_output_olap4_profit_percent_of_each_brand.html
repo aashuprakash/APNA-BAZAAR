@@ -1,0 +1,30 @@
+{% extends 'shop/basic.html' %}
+
+{% block css %}
+    
+{% endblock %}
+
+
+{% block title%} Query output{% endblock %}
+
+{% block body %}
+{% load static %}
+<h1 class="text-center mt-4 ">Query Output:</h1>
+<h2 class="text-center mt-4 mb-4">profit percentage for each brand of every product</h2>
+<table class="table table-bordered table-striped  text-center  mt-3 mb-3 ">
+    <tr>
+        <th>Product Name</th>
+        <th>Brand Name</th>
+        <th>Profit Percentage</th>
+    </tr>
+{% for a in products %}
+
+<tr>
+    <td>{{a.product_name}}</td>
+    <td>{{a.brand_name}}</td>
+    <td>{{a.profit_percentage}}</td>
+</tr>
+{% endfor %}
+</table>
+
+{% endblock %}

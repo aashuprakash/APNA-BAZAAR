@@ -1,0 +1,112 @@
+{% extends 'shop/basic.html' %}
+
+{% block title%} Admin Page{% endblock %}
+
+{% block body %}
+{% load static %}
+<h1 class="text-center mt-4">Admin Queries (Restricted Access)</h1>
+
+<div class="text-container d-flex flex-column align-items-center">
+    <h2 class="mt-3 mb-3">OLAP QUERIES</h2>
+    <div class="btn mt-4 mb-4" style="background-color: #fcd860;">
+        <a href="/shop/query_output_olap1_disinct_prods_int_year" class="text-decoration-none text-reset">
+            <h3>How many non distinct products were sold in each category each year ?</h3>
+        </a>
+    </div>
+    <div class="btn btn-warning mt-4 mb-4" style="background-color: #ffd857;">
+        <a href="/shop/query_output_olap2_brand_wise_profit_in_year" class="text-decoration-none text-reset">
+            <h3>How has been the brand-wise profit (in Rs.) in each year been like ?</h3>
+        </a>
+    </div>
+    <div class="btn btn-warning mt-4 mb-4" style="background-color: #fdd245;">
+        <a href="/shop/query_output_olap3_amt_spent_by_cust_each_month" class="text-decoration-none text-reset">
+            <h3>What is total amount spent by each customer (in Rs.) in each month, year for buying stuff ?</h3>
+        </a>
+    </div>
+    <div class="btn btn-warning mt-4 mb-4">
+        <a href="/shop/query_output_olap4_profit_percent_of_each_brand" class="text-decoration-none text-reset">
+            <h3>What is the profit percentage for each brand of every product ? </h3>
+            <h3>(to decide which brand is beneficial to buy products to stock the store) </h3>
+        </a>
+    </div>
+
+    <h2 class="mt-3 mb-3">SOME OTHER QUERIES</h2>
+    <div class="btn btn-success mt-4 mb-4" style="background-color:#00b37d;">
+        <a href="/shop/query_output_top10" class="text-decoration-none text-reset">
+            <h3>Who are the top 5 customers who have the most bills in the store ordered by the number of their bills ?
+            </h3>
+        </a>
+    </div>
+
+    <div class="btn btn-success mt-4 mb-4" style="background-color:#00996b;">
+        <a href="/shop/query_output_all_cats_by_profit" class="text-decoration-none text-reset">
+            <h3>Listing all the categories of the store in order of most profitable to least profitable
+            </h3>
+        </a>
+    </div>
+
+    <div class="btn btn-success mt-4 mb-4">
+        <a href="/shop/query_output_avg_price_brands" class="text-decoration-none text-reset">
+            <h3>Finding the most luxurious (Case 1) or cost-effective (Case 2) brand in the </h3>
+            <h3>store looking at the average price of the products sold by it</h3>
+        </a>
+    </div>
+
+    <div class="btn btn-success mt-4 mb-4">
+        <a href="/shop/query_output_yearly_profit" class="text-decoration-none text-reset">
+            <h3>Finding the yearly profit of the store across all sales </h3>
+        </a>
+    </div>
+    <div class="btn btn-success mt-4 mb-4">
+        <a href="/shop/query_output_qty_checker" class="text-decoration-none text-reset">
+            <h3>Checking which products of each category are left in the inventory that have a</h3>
+            <h3>qty of less than 40 </h3>
+        </a>
+    </div>
+    <div class="btn btn-success mt-4 mb-5">
+        <a href="/shop/query_output_product_per_brand" class="text-decoration-none text-reset">
+            <h3>Listing all the Brands that Sell a Particular product</h3>
+        </a>
+    </div>
+    <h2 class="mt-4 mb-4">CUSTOM QUERY EXECUTER</h2>
+    <form class="d-flex mt-4 mb-4" role="search" action="/shop/query_output/" method="get">
+        <input class="form-control-lg" name="custom" type="text" placeholder="Enter Query" id="custom"
+          aria-label="Search">
+        <button class="btn btn-danger mx-2" type="submit">Execute</button>
+      </form>
+    <h2 class="mt-5 mb-4">CREATE NEW PRODUCT</h2>
+    <form class="d-flex mt-4 mb-4" role="search" action="/shop/new_product/" method="get">
+        <input class="form-control-sm  mx-3" name="prod_name" type="text" placeholder="Enter Name" id="prod_name"
+          aria-label="Search">
+        <input class="form-control-sm mx-3" name="prod_categ" type="text" placeholder="Enter Category" id="prod_categ"
+          aria-label="Search">
+        <input class="form-control-sm mx-3" name="prod_brand" type="text" placeholder="Enter an existing brand" id="prod_brand"
+          aria-label="Search">
+        <input class="form-control-sm mx-3" name="prod_cost" type="text" placeholder="Cost price" id="prod_cost"
+          aria-label="Search">
+        <input class="form-control-sm mx-3" name="prod_sell" type="text" placeholder="Selling price" id="prod_sell"
+          aria-label="Search">
+        <input class="form-control-sm mx-3" name="prod_qty" type="text" placeholder="Quantity" id="prod_qty"
+          aria-label="Search">
+        <button class="btn btn-danger mx-2" type="submit">Create</button>
+      </form>
+      <h2 class="mt-5 mb-4">DELETE CATEGORY</h2>
+      <form class="d-flex mt-4 mb-4" role="search" action="/shop/delete_category/" method="get">
+        <input class="form-control-lg" name="categ" type="text" placeholder="Enter Query" id="categ"
+          aria-label="Search">
+        <button class="btn btn-danger mx-2" type="submit">Delete</button>
+      </form>
+      <h2 class="mt-5 mb-4">ENTER BILL NO. FOR RETURN</h2>
+      <form class="d-flex mt-4 mb-4" role="search" action="/shop/return_order/" method="get">
+        <input class="form-control-lg" name="bill" type="number" placeholder="Enter Bill no." id="bill"
+          aria-label="Search">
+        <button class="btn btn-danger mx-2" type="submit">Return</button>
+      </form>
+    <!-- <div class="btn btn-danger mt-5 mb-4">
+        <a href="/shop/query_output" class="text-decoration-none text-reset">
+            <h3>Custom query Executer</h3>
+        </a>
+    </div> -->
+</div>
+
+{% endblock %}

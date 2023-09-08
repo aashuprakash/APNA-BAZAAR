@@ -1,0 +1,35 @@
+{% extends 'shop/basic.html' %}
+
+{% block title%} View Cart{% endblock %}
+
+{% block body %} 
+{% load static %}
+<h1 class="mt-4 ms-3 text-center mb-5">Here is your cart </h1>
+<!-- <h3>{{products.0.brand_name}} {{products.0.product_name}} {{qty.0}}</h3> -->
+<table class="table table-bordered table-striped text-center mt-5">
+   <tr>
+        <th>Item-name</th>
+        <th>Quantity</th>
+        <th>Cost Price per piece</th>
+        <th>Total</th>
+   </tr>
+{% for i,j in products.items %}
+    <tr>
+        <td>{{i.brand_name}}-{{i.product_name}}</td>
+        <td>{{j.0}}</td>
+        <td> Rs. {{i.cost_price}}</td>
+        <td> Rs. {{j.1}}</td>
+  
+    </tr>
+{% endfor %}
+</table>
+
+<h4 class="text-center">Total amount payable is Rs. {{sum}} </h4>
+<div class="container d-flex justify-content-center mt-3">
+    <form action="/shop/checkout/" method="POST">{% csrf_token %}
+         <button type="submit" class="btn btn-warning">Proceed to Checkout</button>
+    </form>
+</div>
+
+
+{% endblock %}

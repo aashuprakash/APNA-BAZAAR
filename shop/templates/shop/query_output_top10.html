@@ -1,0 +1,31 @@
+{% extends 'shop/basic.html' %}
+
+{% block css %}
+    .table-striped>tr:nth-child(odd)
+    {
+        background-color:yellow;
+    }
+{% endblock %}
+
+
+{% block title%} Query output{% endblock %}
+
+{% block body %}
+{% load static %}
+<h1 class="text-center mt-4">Query Output:</h1>
+<h2 class="text-center mt-4 mb-4">top 10 customers having the most bills in the store</h2>
+<table class="table table-bordered table-striped  text-center  mt-3 mb-3 ">
+    <tr>
+        <th>Customer Name</th>
+        <th>No. of Bills</th>
+    </tr>
+{% for a in customers %}
+
+<tr>
+    <td>{{a.cust_name}}</td>
+    <td>{{a.cnt}}</td>
+</tr>
+{% endfor %}
+</table>
+
+{% endblock %}

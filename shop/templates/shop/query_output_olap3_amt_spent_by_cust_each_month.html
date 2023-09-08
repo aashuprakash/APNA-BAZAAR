@@ -1,0 +1,32 @@
+{% extends 'shop/basic.html' %}
+
+{% block css %}
+    
+{% endblock %}
+
+
+{% block title%} Query output{% endblock %}
+
+{% block body %}
+{% load static %}
+<h1 class="text-center mt-4 ">Query Output:</h1>
+<h2 class="text-center mt-4 mb-4">total amount spent by a customer (in Rs.) in each month,year for buying stuff</h2>
+<table class="table table-bordered table-striped  text-center  mt-3 mb-3 ">
+    <tr>
+        <th>Customer Name</th>
+        <th>Month</th>
+        <th>Year</th>
+        <th>Total</th>
+    </tr>
+{% for a in customers %}
+
+<tr>
+    <td>{{a.cust_name}}</td>
+    <td>{{a.month}}</td>
+    <td>{{a.year}}</td>
+    <td>{{a.total}}</td>
+</tr>
+{% endfor %}
+</table>
+
+{% endblock %}
